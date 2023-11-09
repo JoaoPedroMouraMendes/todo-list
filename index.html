@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-
-    <title>Todo List</title>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+        <title>Todo List</title>
 </head>
+
 <body>
     <main>
         <header id="background">
@@ -21,12 +24,17 @@
         </header>
         <span id="inbox">Tarefas</span>
         <ul id="task-list">
-            <section class="task">
+            <section class="task completed-task">
                 <input type="checkbox" name="" id="">
-                <p>Tarefa</p>
-                <button>a</button>
+                <p contenteditable>Tarefa</p>
+                <button>
+                    <span class="material-symbols-outlined">
+                        delete
+                    </span>
+                </button>
             </section>
         </ul>
     </main>
 </body>
+
 </html>

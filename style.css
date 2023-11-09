@@ -8,13 +8,10 @@
     --color2: #8d7cff;
     --color3: #a69be9;
 
-    --progress-bar: #6754debf;
-    --progress-bar-empity: #afadbbbf;
-
     --contrast: #EE6B4D;
 
     --white: #f8f8f8;
-    --gray: #c8c8c8;
+    --gray: #afadbbbf;
     --black: #302941;
     --background: #d7ddec;
 }
@@ -36,7 +33,7 @@ body {
 
 main {
     min-width: 200px;
-    max-width: 800px;
+    max-width: 700px;
     min-height: 500px;
     margin: auto;
 
@@ -81,7 +78,8 @@ main {
 
     top: 95.55%;
 
-    background-color: var(--progress-bar);
+    background-color: var(--color1);
+    opacity: 0.75;
 }
 
 #date::before {
@@ -93,7 +91,8 @@ main {
 
     top: 95.55%;
 
-    background-color: var(--progress-bar-empity);
+    background-color: var(--gray);
+    opacity: 0.75;
 }
 
 #title, #today {
@@ -136,14 +135,16 @@ main {
 
 #task-list {
     padding: 20px;
+    list-style: none;
 }
 
 .task {
+    height: 30px;
+    padding: 10px;
+
     display: flex;
     align-items: center;
     gap: 8px;
-
-    padding: 10px;
 
     border-radius: 5px;
 }
@@ -161,6 +162,24 @@ main {
     line-break: anywhere;
 
     color: var(--black);
+}
+
+.task button {
+    border: none;
+    color: var(--black); 
+    background-color: var(--white);
+    
+    cursor: pointer;
+}
+
+.task button span {
+    width: 20px;
+    height: 20px;
+}
+
+.completed-task {
+    text-decoration: line-through;
+    opacity: 0.5;
 }
 
 @media (max-width: 500px) {
