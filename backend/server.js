@@ -8,7 +8,7 @@ const todos = [];
 app.use(express.json());
 
 app.get("/", (req, res) => {
-    res.send("Olá");
+    
 });
 
 app.post("/", async (req, res) => {
