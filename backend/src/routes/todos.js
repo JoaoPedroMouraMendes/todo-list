@@ -23,7 +23,7 @@ router.post("/todo", (req, res) => {
         };
 
         db.addTodo(todo);
-        res.status(200).json(db.todos);
+        res.status(201).json(db.todos);
     } catch (error) {
         res.status(400).send(error.message);
     }
