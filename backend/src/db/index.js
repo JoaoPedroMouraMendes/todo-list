@@ -25,6 +25,13 @@ class DB {
         return deletedTodo;
     }
 
+    deleteAllTodos() {
+        const previousTodos = this.todos;
+        this.todos = [];
+        // Retorna todas as tarefas deletadas
+        return previousTodos;
+    }
+
     findTodoById(id) {
         return this.todos.findIndex((row) => row.id === id);;
     }

@@ -6,7 +6,7 @@ const db = require("../db/index.js");
 const crypto = require("crypto");
 
 // ROTAS
-router.get("/", (req, res) => {
+router.get("/todo", (req, res) => {
     try {
         res.status(200).json(db.todos);
     } catch (error) {
@@ -14,7 +14,7 @@ router.get("/", (req, res) => {
     }
 })
 
-router.post("/", (req, res) => {
+router.post("/todo", (req, res) => {
     try {
         const todo = {
             checked: req.body.checked,
@@ -29,7 +29,7 @@ router.post("/", (req, res) => {
     }
 });
 
-router.put("/:id", (req, res) => {
+router.put("/todo/:id", (req, res) => {
     try {
         const id = req.params.id;
         const todo = db.editTodo(id, req.body);
@@ -39,11 +39,17 @@ router.put("/:id", (req, res) => {
     }
 });
 
-router.delete("/:id", (req, res) => {
+router.delete("/todo/:id?", (req, res) => {
     try {
         const id = req.params.id;
-        const todo = db.deleteTodo(id);
-        res.status(200).json(todo);
+        // Se haver id vai excluir a tarefa com esse id, caso contrário vai excluir tudo
+        if (id) {
+            const todo = db.deleteTodo(id);
+            res.status(200).json(todo);
+        } else {
+            const todos = db.deleteAllTodos();
+            res.status(200).json(todos);
+        }
     } catch (error) {
         res.status(400).send(error.message);
     }

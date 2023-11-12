@@ -7,9 +7,15 @@ export default class ProgressBar {
     }
 
     updateProgressBar() {
+        const { allTasks } = this.todoList;
+        // Caso não tenha tarefas retorna a função
+        if (allTasks.length === 0) {
+            this.progressBar.style.width = 0;
+            return;
+        }
+
         // Separa as tarefas finalizadas das ainda em andamento
         let completedTasks = 0;
-        const { allTasks } = this.todoList;
         allTasks.forEach(task => {
             if (task.checked) completedTasks++;
         });

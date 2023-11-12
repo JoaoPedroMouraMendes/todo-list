@@ -32,7 +32,7 @@ export default class TodoList {
 
     async getTasks() {
         try {
-            const resp = await fetch("http://localhost:3030");
+            const resp = await fetch("http://localhost:3030/todo");
             const tasks = await resp.json();
             // Guarda as tasks
             this.allTasks = tasks;
@@ -48,7 +48,7 @@ export default class TodoList {
     async createTask() {
         try {
             // Cria a tarefa
-            await fetch("http://localhost:3030", {
+            await fetch("http://localhost:3030/todo", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({
@@ -69,7 +69,7 @@ export default class TodoList {
 
     async updateTask({ target }) {
         try {
-            await fetch(`http://localhost:3030/${target.parentElement.id}`, {
+            await fetch(`http://localhost:3030/todo/${target.parentElement.id}`, {
                 method: "PUT",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({
@@ -106,7 +106,7 @@ export default class TodoList {
 
     async deleteTask({ currentTarget }) {
         try {
-            await fetch(`http://localhost:3030/${currentTarget.parentElement.id}`, {
+            await fetch(`http://localhost:3030/todo/${currentTarget.parentElement.id}`, {
                 method: "DELETE"
             });
             // Obtem as tarefas atualizadas
@@ -125,8 +125,21 @@ export default class TodoList {
         );
     }
 
+    removeAllTask() {
+        try {
+            fetch("http://localhost:3030/todo/", {
+                method: "DELETE"
+            });
+        } catch (error) {
+            throw new Error(error);
+        }
+    }
+
     init() {
         if (this.createButton && this.todoList) {
+            // Remove todas as tarefas já criadas
+            this.removeAllTask();
+
             this.addCreateTaskEvent();
             this.getTasks();
         }
