@@ -23,7 +23,7 @@ Dentro de TodoList remova o método "this.removeAllTask()" do método "init()".
 init() {
         if (this.createButton && this.todoList) {
             // Remove todas as tarefas já criadas
-            this.removeAllTask();
+            this.removeAllTask(); // *Remova essa linha
 
             this.addCreateTaskEvent();
             this.getTasks();
