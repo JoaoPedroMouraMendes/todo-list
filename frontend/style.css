@@ -65,7 +65,7 @@ main {
     border-radius: 10px 10px 0px 0px;
 
     color: var(--white);
-    background-image: url('backgrounds/winter.jpg');
+    background-image: url('media/winter.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
