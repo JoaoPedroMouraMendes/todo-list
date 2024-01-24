@@ -12,13 +12,10 @@ form.addEventListener("submit", async (event) => {
     if (username.value.length === 0) {
         notificationSection.style.display = "block";
         notificationText.textContent = "Insira um nome de usuário";
-        clearInputs();
         return;
-    }
-    if (password.value.length === 0) {
+    } else if (password.value.length === 0) {
         notificationSection.style.display = "block";
         notificationText.textContent = "Insira uma senha";
-        clearInputs();
         return;
     }
 
@@ -34,7 +31,7 @@ form.addEventListener("submit", async (event) => {
         // Verifica se tudo ocorreu certo
         if (status?.token) {
             localStorage.setItem("token", status.token);
-            location.assign(`http://${location.hostname}:5500/index.html`);
+            location.href(`http://${location.hostname}:5500/index.html`);
             return;
         }
         // Notifica o usuário o erro

@@ -21,7 +21,17 @@ main {
     box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.35);
 }
 
+#mobile-background {
+    display: none;
+
+    background-image: url("../media/train.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+}
+
 main h2 {
+    text-transform: uppercase;
     font-family: 'Comfortaa', sans-serif;
     letter-spacing: 3px;
     margin-bottom: 25px;
@@ -61,7 +71,10 @@ main form input:focus {
 }
 
 main form button {
-    height: 30px;
+    height: 35px;
+    letter-spacing: 1px;
+    font-size: 0.95em;
+    text-transform: uppercase;
     border: none;
     border-radius: 15px;
     color: var(--white);
@@ -74,4 +87,25 @@ main p {
     font-size: 0.95em;
     margin-top: 25px;
     color: var(--black);
+}
+
+@media (max-width: 350px) {
+    body {
+        align-items: start;
+        background-color: var(--color3);
+        background-image: none;
+    }
+
+    main {
+        width: 100%;
+        border-radius: 0px;
+        box-shadow: none;
+    }
+
+    #mobile-background {
+        display: block;
+        margin: -25px -25px 25px -25px; 
+        max-width: 350px;
+        height: 200px;
+    }
 }
