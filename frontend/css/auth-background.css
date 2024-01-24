@@ -1,0 +1,77 @@
+@import url("settings.css");
+
+body {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-image: url("../media/train.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+}
+
+main {
+    width: 300px;
+    padding: 25px;
+
+    border-radius: 15px;
+    background-color: var(--color3);
+    box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.35);
+}
+
+main h2 {
+    font-family: 'Comfortaa', sans-serif;
+    letter-spacing: 3px;
+    margin-bottom: 25px;
+    text-align: center;
+    color: var(--black);
+}
+
+main form {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+main #notification {
+    display: none;
+    padding: 10px;
+
+
+    border-radius: 10px;
+    background-color: rgba(var(--warning), 0.25);
+}
+
+main #notification span {
+    font-size: 0.95em;
+    color: rgb(var(--warning));
+}
+
+main form input {
+    border-radius: 5px;
+    padding: 5px;
+    height: 30px;
+    border: none;
+}
+
+main form input:focus {
+    outline: 2px solid var(--color0);
+}
+
+main form button {
+    height: 30px;
+    border: none;
+    border-radius: 15px;
+    color: var(--white);
+    background-color: var(--contrast);
+    box-shadow: 2px 4px 6px rgba(238, 107, 77, 0.4);
+    cursor: pointer;
+}
+
+main p {
+    font-size: 0.95em;
+    margin-top: 25px;
+    color: var(--black);
+}

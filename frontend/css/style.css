@@ -1,28 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@200;300;400&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500&display=swap');
-
-:root {
-    --color0: #61589c;
-    --color1: #6653dd;
-    --color2: #8d7cff;
-    --color3: #e6e0ff;
-
-    --contrast: #EE6B4D;
-
-    --white: #f8f8f8;
-    --gray: #afadbbbf;
-    --black: #302941;
-    --background: #d9ddfc;
-}
-
-* {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-
-    font-family: 'Roboto', sans-serif;
-}
+@import url("settings.css");
 
 body {
     min-height: 100vh;
@@ -65,7 +41,7 @@ main {
     border-radius: 10px 10px 0px 0px;
 
     color: var(--white);
-    background-image: url('media/winter.jpg');
+    background-image: url('../media/winter.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -147,7 +123,12 @@ main {
 }
 
 #add-task {
+    width: 30px;
+    height: 30px;
     padding: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     border: none;
     border-radius: 50%;

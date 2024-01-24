@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@200;300;400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500&display=swap');
+
+:root {
+    --color0: #61589c;
+    --color1: #6653dd;
+    --color2: #8d7cff;
+    --color3: #e6e0ff;
+
+    --contrast: #EE6B4D;
+    --warning: 223, 81, 81;
+
+    --white: #f8f8f8;
+    --gray: #afadbbbf;
+    --black: #302941;
+    --background: #d9ddfc;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+
+    font-family: 'Roboto', sans-serif;
+}
