@@ -5,7 +5,7 @@ const confirmPasswrod = document.querySelector("#confirm-password");
 const notificationSection = document.querySelector("#notification");
 const notificationText = document.querySelector("#notification span");
 
-const authURL = "http://localhost:3000";
+const authURL = "https://auth-backend-jade.vercel.app";
 
 form.addEventListener("submit", async (event) => {
     event.preventDefault();

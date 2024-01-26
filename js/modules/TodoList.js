@@ -1,5 +1,6 @@
 export default class TodoList {
     allTasks;
+    dbURL = "http://localhost:3030";
 
     constructor(createButton, todoList) {
         this.createButton = document.querySelector(createButton);
@@ -14,9 +15,9 @@ export default class TodoList {
         // Renderiza todas as tarefas
         tasks.forEach(task => {
             this.todoList.innerHTML += `
-            <li class="task ${task.checked ? "completed-task" : ""}" id="${task.id}">
+            <li class="task ${task.checked ? "completed-task" : ""}" id="${task._id}">
                 <input type="checkbox" ${task.checked ? "checked" : ""}>
-                <p contenteditable spellcheck="false">${task.description}</p>
+                <p contenteditable spellcheck="false">${task.todoName}</p>
                 <button class="delete-button">
                     <span class="material-symbols-outlined">
                         delete
@@ -32,8 +33,14 @@ export default class TodoList {
 
     async getTasks() {
         try {
-            const resp = await fetch("http://localhost:3030/todo");
-            const tasks = await resp.json();
+            const resp = await fetch(`${this.dbURL}/todos`, {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json; charset=UTF-8",
+                    "Authorization": `Bearer ${localStorage.getItem("token")}`
+                }
+            });
+            const tasks = await resp.json().then(userData => userData.todos);
             // Guarda as tasks
             this.allTasks = tasks;
             // Dispara o evento de quando as tasks são atualizadas
@@ -48,13 +55,12 @@ export default class TodoList {
     async createTask() {
         try {
             // Cria a tarefa
-            await fetch("http://localhost:3030/todo", {
+            await fetch(`${this.dbURL}/todo/create`, {
                 method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({
-                    description: "Digite sua tarefa...",
-                    checked: false
-                })
+                headers: {
+                    "Content-Type": "application/json; charset=UTF-8",
+                    "Authorization": `Bearer ${localStorage.getItem("token")}`
+                }
             });
             // Obtem as tarefas atualizadas
             this.getTasks();
@@ -69,11 +75,18 @@ export default class TodoList {
 
     async updateTask({ target }) {
         try {
-            await fetch(`http://localhost:3030/todo/${target.parentElement.id}`, {
+            if (target instanceof HTMLParagraphElement && target.innerText === "") {
+                target.innerText = "Digite sua tarefa...";
+                return;
+            }
+            await fetch(`${this.dbURL}/todo/edit/${target.parentElement.id}`, {
                 method: "PUT",
-                headers: { "Content-Type": "application/json" },
+                headers: {
+                    "Content-Type": "application/json; charset=UTF-8",
+                    "Authorization": `Bearer ${localStorage.getItem("token")}`
+                },
                 body: JSON.stringify({
-                    description: target instanceof HTMLParagraphElement
+                    newName: target instanceof HTMLParagraphElement
                         ? target.innerText
                         : target.nextElementSibling.innerText,
                     checked: target instanceof HTMLInputElement
@@ -106,8 +119,12 @@ export default class TodoList {
 
     async deleteTask({ currentTarget }) {
         try {
-            await fetch(`http://localhost:3030/todo/${currentTarget.parentElement.id}`, {
-                method: "DELETE"
+            await fetch(`${this.dbURL}/todo/delete/${currentTarget.parentElement.id}`, {
+                method: "DELETE",
+                headers: {
+                    "Content-Type": "application/json; charset=UTF-8",
+                    "Authorization": `Bearer ${localStorage.getItem("token")}`
+                }
             });
             // Obtem as tarefas atualizadas
             this.getTasks();
@@ -125,21 +142,8 @@ export default class TodoList {
         );
     }
 
-    removeAllTask() {
-        try {
-            fetch("http://localhost:3030/todo/", {
-                method: "DELETE"
-            });
-        } catch (error) {
-            throw new Error(error);
-        }
-    }
-
     init() {
         if (this.createButton && this.todoList) {
-            // Remove todas as tarefas já criadas
-            this.removeAllTask();
-
             this.addCreateTaskEvent();
             this.getTasks();
         }

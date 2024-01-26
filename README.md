@@ -1,8 +1,10 @@
 # LISTA DE TAREFAS 📋
 
+## Introdução
+
 Esta é uma simples lista de tarefas onde você poder criar suas tarefas e acompanhar o que já foi realizado por meio de uma barra de progresso.
 
-Características do projeto:
+### Características do projeto:
 
 - Moderno 🚀
 
