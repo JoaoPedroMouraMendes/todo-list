@@ -1,11 +1,12 @@
-const authURL = "https://auth-backend-jade.vercel.app";
+import { dbURL } from "../settings.js";
+
 export default async function logged() {
     const token = localStorage.getItem("token");
     if (!token) {
         return false;
     }
 
-    return await fetch(`${authURL}/auth/validation`, {
+    return await fetch(`${dbURL}/auth/validation`, {
         method: "GET",
         headers: {
             "Content-Type": "application/json; charset=UTF-8",

@@ -1,10 +1,10 @@
 export default class TodoList {
     allTasks;
-    dbURL = "http://localhost:3030";
 
-    constructor(createButton, todoList) {
+    constructor(createButton, todoList, dbURL) {
         this.createButton = document.querySelector(createButton);
         this.todoList = document.querySelector(todoList);
+        this.dbURL = dbURL;
 
         this.updateTaskEvent = new CustomEvent("updateTask");
     }
