@@ -3,7 +3,7 @@ import CreateButton from "./modules/CreateButton.js";
 import TodoList from "./modules/TodoList.js";
 import ProgressBar from "./modules/ProgressBar.js";
 import { dbURL } from "./settings.js";
-localStorage.clear();
+console.log("test");
 const displayToday = new DisplayToday("#today-date");
 displayToday.init();
 
