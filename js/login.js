@@ -35,7 +35,7 @@ form.addEventListener("submit", async (event) => {
         if (status?.token) {
             load.style.display = "none";
             localStorage.setItem("token", status.token);
-            location.href = `${location.hostname}:5500/index.html`;
+            location.assign("/index.html");
             return;
         }
         load.style.display = "none";

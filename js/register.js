@@ -45,7 +45,7 @@ form.addEventListener("submit", async (event) => {
         // Verifica se tudo ocorreu certo
         if (status.ok) {
             load.style.display = "none";
-            location.href = `${location.hostname}:5500/pages/login.html`;
+            location.assign("/pages/login.html");
             return;
         }
         load.style.display = "none";
