@@ -1,6 +1,6 @@
 # LISTA DE TAREFAS 📋
 
-Esta é uma simples lista de tarefas onde você poder criar suas tarefas e acompanhar o que já foi realizado por meio de uma barra de progresso.
+Esta é uma simples lista de tarefas onde você poder criar suas tarefas e acompanhar o que já foi realizado por meio de uma barra de progresso. Para acessar o site clique [aqui](http://todo-list-jade.netlify.app).
 
 ### Características do projeto:
 
